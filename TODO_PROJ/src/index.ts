@@ -1,11 +1,10 @@
-import {TodoCollection} from './TodoCollection';
-import {TodoItem} from './Todoitem';
+import {TodoCollection} from './service/TodoCollection';
+import {TodoItem} from './model/Todoitem';
 import {data} from './data';
 
-/* 
-typeScript 는 가변인자로 함수를 호출할 수 없다.
-javaScript 가변인자를 하려면, 함수 오버로딩을 해야 한다.
-*/
+// typeScript 는 가변인자로 함수를 호출할 수 없다.
+// javaScript 가변인자를 하려면, 함수 오버로딩을 해야 한다.
+
 // console.log('My Todo List');
 // for (let i: number = 0; i < data.length; i++) {
 // 	let todoItem: TodoItem = new TodoItem(data[i].id, data[i].task, data[i].complete);
@@ -21,4 +20,10 @@ myTodoCollection.addTodo('친구만나기');
 myTodoCollection.makrComplete(3, true);
 
 console.log(`${myTodoCollection.userName}`);
-myTodoCollection.todoItems.forEach((item) => item.printDetails());
+myTodoCollection.getTodoItems(false).forEach((item) => item.printDetails());
+console.log('=============================');
+myTodoCollection.getTodoItems(true).forEach((item) => item.printDetails());
+
+console.log('=============================');
+myTodoCollection.removeComplete();
+myTodoCollection.getTodoItems(true).forEach((item) => item.printDetails());

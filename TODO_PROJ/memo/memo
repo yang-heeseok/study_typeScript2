@@ -1,0 +1,5 @@
+나무소리
+[1] nodejs, typeScript 설치
+[2] tsconfig.json : tsc --init 파일 생성 명령
+[3] npm init
+[4] npm i nodemon concurrently
