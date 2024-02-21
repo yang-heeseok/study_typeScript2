@@ -1,3 +1,7 @@
+import {CharactersCollection} from './test/charactersCollection';
+import {Customer} from './test/customer';
+import {CustomerCollection} from './test/customerCollections';
+import {NumbersCollection} from './test/numbersCollection';
 import {Jsorter} from './test/sorter';
 import {TodoConsole} from './view/TotoConsole';
 
@@ -31,13 +35,26 @@ import {TodoConsole} from './view/TotoConsole';
 
 //_____________________________________________________________________
 
+// [1] user input logic
 // const todoConsole = new TodoConsole();
 // todoConsole.promptUser();
 
 //_____________________________________________________________________
 
-const sorter1 = new Jsorter([10, 2, 3, 4, -6]);
-console.log(sorter1.sort());
+// [2] interface useful
+const numbersCollection = new NumbersCollection([10, -7, 55, 3, 21]);
+const sorter1 = new Jsorter(numbersCollection);
+sorter1.sort();
+sorter1.printCollection();
 
-const sorter2 = new Jsorter('gfedcba');
-console.log(sorter2.sort());
+const charactersCollection = new CharactersCollection('TypeScript');
+const sorter2 = new Jsorter(charactersCollection);
+sorter2.sort();
+sorter2.printCollection();
+
+const customerCollection = new CustomerCollection([new Customer('A111', 'Yang'), new Customer('A111', 'Park'), new Customer('A111', 'Kim')]);
+const sorter3 = new Jsorter(customerCollection);
+sorter3.sort();
+sorter3.printCollection();
+
+//_____________________________________________________________________

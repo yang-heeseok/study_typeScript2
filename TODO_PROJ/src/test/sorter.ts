@@ -1,31 +1,31 @@
+interface Sortable {
+	length: number;
+	compare(leftIndex: number, rightIndex: number): boolean;
+	swap(leftIndex: number, rightIndex: number): void;
+}
+
 export class Jsorter {
-	constructor(private collection: number[] | string) {}
-	sort(): number[] | string {
-		const {length} = this.collection;
+	constructor(private _collection: Sortable) {} // 덕타이핑
+
+	get collection() {
+		return this._collection;
+	}
+
+	sort(): void {
+		const {length} = this._collection;
 
 		for (let i = 0; i < length; i++) {
 			for (let j = 0; j < length - i - 1; j++) {
-				// union type Guard
-				if (typeof this.collection === 'string') {
-					if (this.collection[j].toLowerCase() > this.collection[j + 1].toLowerCase()) {
-						const characters = this.collection.split('');
-						const temp = characters[j];
-						characters[j] = characters[j + 1];
-						characters[j + 1] = temp;
-						this.collection = characters.join('');
-					}
-				}
-				if (this.collection instanceof Array) {
-					if (this.collection[j] > this.collection[j + 1]) {
-						// swap
-						const temp = this.collection[j];
-						this.collection[j] = this.collection[j + 1];
-						this.collection[j + 1] = temp;
-					}
+				// Guard
+				if (this._collection.compare(j, j + 1)) {
+					this._collection.swap(j, j + 1);
 				}
 			}
 		}
-		return this.collection;
+	}
+
+	printCollection(): void {
+		console.log(this.collection);
 	}
 }
 
