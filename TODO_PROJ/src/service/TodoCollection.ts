@@ -1,5 +1,5 @@
 import {TodoItem} from '../model/Todoitem';
-import {ItemCounts} from '../model/itemCount';
+import {ItemCounts} from '../model/itemCounts';
 
 export class TodoCollection {
 	private nextId: number = 1;
